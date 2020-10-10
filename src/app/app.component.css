@@ -1,6 +1,4 @@
-.stylesList {
-    text-decoration: line-through;
-}
+
 
 .placeholder {
     width: 100%;
@@ -19,7 +17,10 @@
     color: red;
     font-weight: bold;
 }
-
+ 
+.strike {
+    text-decoration: line-through;
+} 
 
 
   

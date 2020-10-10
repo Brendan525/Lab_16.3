@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Lab 16-3';
+  searchInput: string;
+  inputTask: string;
 
   choreList: ToDo[] =  [
     {task: 'Brushing teeth and wash face', complete: true}, 
@@ -14,22 +16,32 @@ export class AppComponent {
     {task: 'Cook and eat breakfast', complete: true},
     {task: 'Go to work', complete: false},
     {task: 'Go home', complete: false},
-  ]
+  ];
+
+  filteredTask = [...this.choreList];
 
 
 
-completeTask(choreList: ToDo)  {
-  var element = document.getElementById("target");
-  element.classList.toggle("stylesList");
-  choreList.complete = true;
+completeTask = ToDo => {
+  let index = this.choreList.indexOf(ToDo)
+  this.choreList[index].complete = true;
+  this.filterToDo();
+
 }
 
-addTask() {
-  this.choreList.push({task: 'Go to sleep', complete: false})
+addTask()  {
+  const newTask = {task: this.inputTask, complete: false};
+
+  this.choreList.push(newTask);
+  this.filterToDo();
+  this.inputTask;
+  
+  
 }
 
 removeTask = (index) =>  {
-  this.choreList.splice(index,1);  
+  this.choreList.splice(index,1); 
+  this.filterToDo();
 };
 
 doneTasks() {
@@ -41,25 +53,10 @@ doneTasks() {
   }
 }
 
-
-// toggleHeader = () => {
-//   this.hideTitle = !this.hideTitle;
-// };
-
-// toggleStrike= () => {
-//   this.hideTitle = !this.hideTitle;
-// }
-
-
-// togglestylesList= () => {
-//    stylesList = !stylesList;
-// }
-
-// filterToDos = () => {
-//   this.filterToDos = this.filterToDos.filter(todo =>
-//     todo.name.includes(this.filterText)
-//   );
-//   };
+filterToDo() {
+  const lower = this.searchInput ? this.searchInput.toLowerCase() : '';
+  this.filteredTask = this.choreList.filter(choreList => choreList.task.toLowerCase().includes(lower));
+};
 
 }
 
@@ -68,6 +65,7 @@ interface ToDo  {
   complete: boolean; 
   // hideTitle: boolean;
 }
+
 
 
 

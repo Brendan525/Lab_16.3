@@ -5,15 +5,15 @@
     <h1>TODO List</h1>
     <p>A place to store your todos</p>
     
-    <input id="input" class="filterField" type="search" (input)="filterToDos()" [(ngModel)]="filterText" placeholder="Filter your to-dos"/>
+    <input type="text" (input)="filterToDo()" [(ngModel)]="searchInput" placeholder="Filter your to-dos"/>
     <br><br/>
 
   <div>
     <ol id="list"> 
       <li id="task" *ngFor="let ToDo of choreList let i = index">
-        <button  *ngIf="ToDo.complete==false"(click)="completeTask(ToDo)">Complete</button>
+        <button *ngIf="ToDo.complete==false"(click)="completeTask(ToDo)">Complete</button>
         <div *ngIf="ToDo.task">
-          <p id="target" contenteditable="true"> {{ ToDo.task }}  </p> 
+          <p id="target" contenteditable="true" [ngClass]="{strike: ToDo.complete}"> {{ ToDo.task }}  </p> 
         </div>
         <button (click)="removeTask(i)">X</button>  
         <br><br/>
@@ -23,13 +23,11 @@
 
   <p class="congratulations" *ngIf="doneTasks()">Congratulations. The list is completed/empty.</p>
  
-  <input class="placeholder" type="text" placeholder="Add your to do" [(ngModel)]="choreInput"/>
+  <input class="placeholder" type="text" placeholder="Add your to do" [(ngModel)]="inputTask"/>
   <br><br/>
   <button class="addButton" (click)="addTask()">Add </button>
 
 </section> 
-
-<input type="text" id="input" placeholder="type here">
 
 
 <script>
