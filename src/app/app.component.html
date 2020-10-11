@@ -4,8 +4,8 @@
   <section>
     <h1>TODO List</h1>
     <p>A place to store your todos</p>
-    
-    <input type="text" (input)="filterToDo()" [(ngModel)]="searchInput" placeholder="Filter your to-dos"/>
+  
+    <input type="text"  id="filter" (input)="filterSearch()" placeholder="Filter your to-dos"/>
     <br><br/>
 
   <div>
@@ -25,10 +25,6 @@
  
   <input class="placeholder" type="text" placeholder="Add your to do" [(ngModel)]="inputTask"/>
   <br><br/>
-  <button class="addButton" (click)="addTask()">Add </button>
+  <button class="addButton" (click)="addTask()">Add</button>
 
 </section> 
-
-
-<script>
-</script>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Z_FILTERED } from 'zlib';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ export class AppComponent {
   title = 'Lab 16-3';
   searchInput: string;
   inputTask: string;
+
+  
 
   choreList: ToDo[] =  [
     {task: 'Brushing teeth and wash face', complete: true}, 
@@ -25,40 +28,57 @@ export class AppComponent {
 completeTask = ToDo => {
   let index = this.choreList.indexOf(ToDo)
   this.choreList[index].complete = true;
-  this.filterToDo();
-
 }
 
 addTask()  {
   const newTask = {task: this.inputTask, complete: false};
 
   this.choreList.push(newTask);
-  this.filterToDo();
   this.inputTask;
-  
+  console.log(newTask);
   
 }
 
 removeTask = (index) =>  {
   this.choreList.splice(index,1); 
-  this.filterToDo();
+
 };
 
 doneTasks() {
   if (this.choreList.length == 0) {
     return true;
+    
   }
   else {
     return false;
   }
 }
 
-filterToDo() {
-  const lower = this.searchInput ? this.searchInput.toLowerCase() : '';
-  this.filteredTask = this.choreList.filter(choreList => choreList.task.toLowerCase().includes(lower));
-};
+
+filterSearch()  {
+
+  const filter = document.getElementById('filter');
+  filter.addEventListener('keyup', () => {
+    Array.from(list.children).map(li => {
+        const matchFound = new RegExp (filter.value, 'gi').test(li.innerText);
+        if (!matchFound) {
+            li.classList.add('hidden');
+        } else {
+            li.classList.remove('hidden');
+        }
+    });
+    });
+}
+
+// filterSearch() {
+//   const search = this.searchInput ? this.searchInput.toLocaleLowerCase(): '';
+//   this.filteredTask = this.choreList.filter(ToDo => ToDo.task.toLocaleLowerCase().includes(search));
+//   console.log(this.filteredTask);
+// }
+
 
 }
+
 
 interface ToDo  {
   task: string;
