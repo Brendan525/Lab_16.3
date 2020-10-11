@@ -23,8 +23,8 @@
 
   <p class="congratulations" *ngIf="doneTasks()">Congratulations. The list is completed/empty.</p>
  
-  <input class="placeholder" type="text" placeholder="Add your to do" [(ngModel)]="inputTask"/>
+  <input class="placeholder" #newTask type="text" placeholder="Add your to do" [(ngModel)]="inputTask"/>
   <br><br/>
-  <button class="addButton" (click)="addTask()">Add</button>
+  <button class="addButton" (click)="addTask(newTask.value)">Add</button>
 
 </section> 

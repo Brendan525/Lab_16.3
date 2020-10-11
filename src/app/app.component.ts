@@ -8,10 +8,7 @@ import { Z_FILTERED } from 'zlib';
 })
 export class AppComponent {
   title = 'Lab 16-3';
-  searchInput: string;
   inputTask: string;
-
-  
 
   choreList: ToDo[] =  [
     {task: 'Brushing teeth and wash face', complete: true}, 
@@ -25,16 +22,21 @@ export class AppComponent {
 
 
 
+
 completeTask = ToDo => {
   let index = this.choreList.indexOf(ToDo)
   this.choreList[index].complete = true;
 }
 
-addTask()  {
-  const newTask = {task: this.inputTask, complete: false};
+addTask(newTask: string)  {
+  
+  //const newTask = {task: inputTask.value, complete: false};
 
-  this.choreList.push(newTask);
-  this.inputTask;
+  this.choreList.push({task: newTask, complete: false});
+  // console.log(newTask);
+
+  // this.choreList.push(newTask)
+  // this.inputTask = 'Hi';
   console.log(newTask);
   
 }
@@ -69,12 +71,6 @@ filterSearch()  {
     });
     });
 }
-
-// filterSearch() {
-//   const search = this.searchInput ? this.searchInput.toLocaleLowerCase(): '';
-//   this.filteredTask = this.choreList.filter(ToDo => ToDo.task.toLocaleLowerCase().includes(search));
-//   console.log(this.filteredTask);
-// }
 
 
 }
