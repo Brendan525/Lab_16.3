@@ -1,5 +1,4 @@
-<h1 [hidden]="hideTitle" [ngClass]="classList"> Welcome to {{ title }}! </h1>
-  <!-- <button class="header" (click)="toggleHeader()">show header?</button>  -->
+
 
   <section>
     <h1>TODO List</h1>
@@ -21,10 +20,27 @@
     </ol>
   </div>
 
-  <p class="congratulations" *ngIf="doneTasks()">Congratulations. The list is completed/empty.</p>
+  <p class="congratulations" *ngIf="doneTasks()">Congratulations. The list is empty.</p>
  
   <input class="placeholder" #newTask type="text" placeholder="Add your to do" [(ngModel)]="inputTask"/>
   <br><br/>
   <button class="addButton" (click)="addTask(newTask.value)">Add</button>
 
 </section> 
+
+<!-- <script>
+  filterSearch = () =>  {
+
+  const filter = document.getElementById('filter');
+  filter.addEventListener('keyup', () => {
+    Array.from(list.children).map(li => {
+        const matchFound = new RegExp (filter.value, 'gi').test(li.innerText);
+        if (!matchFound) {
+            li.classList.add('hidden');
+        } else {
+            li.classList.remove('hidden');
+        }
+    });
+    });
+}
+</script> -->

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Z_FILTERED } from 'zlib';
+
 
 @Component({
   selector: 'app-root',
@@ -19,9 +19,6 @@ export class AppComponent {
   ];
 
   filteredTask = [...this.choreList];
-
-
-
 
 completeTask = ToDo => {
   let index = this.choreList.indexOf(ToDo)
@@ -56,21 +53,22 @@ doneTasks() {
   }
 }
 
+// Uncomment filterSearch() once server is loaded to work
 
-filterSearch()  {
+// filterSearch()  {
 
-  const filter = document.getElementById('filter');
-  filter.addEventListener('keyup', () => {
-    Array.from(list.children).map(li => {
-        const matchFound = new RegExp (filter.value, 'gi').test(li.innerText);
-        if (!matchFound) {
-            li.classList.add('hidden');
-        } else {
-            li.classList.remove('hidden');
-        }
-    });
-    });
-}
+//   const filter = document.getElementById('filter');
+//   filter.addEventListener('keyup', () => {
+//     Array.from(list.children).map(li => {
+//         const matchFound = new RegExp (filter.value, 'gi').test(li.innerText);
+//         if (!matchFound) {
+//             li.classList.add('hidden');
+//         } else {
+//             li.classList.remove('hidden');
+//         }
+//     });
+//     });
+// }
 
 
 }
